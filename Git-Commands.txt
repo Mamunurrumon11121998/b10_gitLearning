@@ -1,0 +1,261 @@
+
+==============================================================================================
+GIT
+==============================================================================================
+
+Step: 1 Download git and install 
+Step: 2 Created a project with private/public 
+
+Step: 3 Understand the commands from here
+https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+
+Step: 4 Tell git who u are
+git config --global user.name "Sam Smith"
+git config --global user.email sam@example.com
+
+Step: 5 Create Local repository after installing git in windows/linux/mac
+go to the folder in command line and below command
+git init
+
+Step: 6 Add files
+git add *
+
+Step: 7 Commit
+git status
+git commit -m "Commit message"
+
+Step: 8 Add repository
+git remote add origin https://github.com/easabbir/gitTestBatch6b.git
+
+Step: 9 List all currently configured remote repositories:
+git remote -v
+
+Step: 9 Push code to repository
+to master
+git push origin master
+
+Downloading and pulling
+-----------------------
+Step: 9 Download from a repository (first time) otherwise git pull
+git clone 
+
+Step: 10 Take latest changes in the framework
+git pull origin master 
+
+Branches
+-----------------------------
+
+Step: 11 creating a new branch
+git checkout -b <branchname>
+
+Step: 12 Switching to a newly created branch
+git checkout <branchname>
+
+Step: 13 to list all the branch 
+git branch
+
+Step: 13 Push to the newly created branch
+git push origin <branchname>
+
+Step: 14 After the branch is ready to merge to master
+switch to master branch first: 	git checkout master
+get latest code: 	git pull origin master
+merge: 			git merge <branchname>
+
+
+Delete Branches
+-----------------------------
+git branch -d <branchname>
+
+Reset 
+------------------------
+git fetch origin
+git reset --hard origin/master
+
+
+
+
+
+======================
+git push origin master
+git remote remove origin
+
+git remote add origin https://my-token@github.com/username/myProjectName
+git push origin master
+
+Create a folder for setting up github actions called .github
+-----------------------------
+mkdir .github
+ls -la
+
+Create a folder inside .github called workflows for any yml file to be called as github actions
+-------------------------------------
+cd .github
+mkdir workflows
+cd workflows
+touch test.yml
+
+==============================================================================================================
+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
+@easabbir/github-actions-test
+https://github.com/easabbir/github-actions-test.git
+git remote add origin https://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@github.com/easabbir/github-actions-test
+================================================================================================================
+YAML -> markup language
+yet another markup language
+higher readability because less char and min language syntax
+----------------------------------------------------------
+understanding yml file
+=======================
+keyname: value
+eg 	service: my-project
+	test: script1
+	test: script2
+
+for json  
+	{
+	"service": "my-project",
+	"test": "script1",
+	"test": "script2"
+	}
+
+object:
+--------
+
+eg 	
+
+myapp:
+		service: my-project
+		test: script1
+		test: script2
+
+for json  
+	{
+	  "myapp":{
+
+		"service": "my-project",
+		"test": "script1",
+		"test": "script2"
+	   }	
+	}
+
+comments
+-----------
+#this is my comments
+
+
+Array
+---------
+
+eg 	myapp:
+		service: my-project
+		test: script1
+		test: script2	
+		myArray: [1,2,3,4,5]
+
+for json  
+	{
+	  "myapp":{
+
+		"service": "my-project",
+		"test": "script1",
+		"test": "script2",
+		"myArray": [1,2,3,4,5]
+	   }	
+	}
+	
+Lists
+-------------
+
+
+myapp:
+		service: my-project
+		test: script1
+		test: script2	
+		myArray: 
+			- key1: value1
+			  keyrandom: valuerandom
+			- key2: value2
+			  keyrandom2:valuerandom2
+			  
+
+after validating
+
+myapp: 
+  myArray: 
+    - "key1:value1 keyrandom1:valuerandom1"
+    - "key2:value2 keyrandom2:valuerandom2"
+  service: my-project
+  test: script2
+
+
+Multiline strings
+-----------------
+Service: my name is sabbir
+	i am an athlete
+key2: hello world
+
+Service: |
+    my name is sabbir
+    i am an athlete
+key2: "hello world"
+
+=========actions-1========
+name: My first GitHub Action
+on: [push]
+jobs:
+    print-hello-world:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Hello World!!!!"
+            - run: echo "This is step number 2"
+
+=========actions-2========		
+			
+name: My first GitHub Action
+on: [push]
+jobs:
+    build-app:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: tree
+
+=========actions-2=installing node=======		
+			
+name: My first GitHub Action
+on: [push]
+jobs:
+    build-app:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2
+              with:
+                node-version: '14.17.0'
+            - run: node -v
+			
+			
+=========actions-3=Buiding with nodemodules=======		
+name: My first GitHub Action
+on: [push]
+jobs:
+    build-app:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2
+              with:
+                node-version: '14.17.0'
+            - name: Install node_modules
+              run: yarn
+            - name: Build the project
+              run: yarn build
+            - name: Setup finish
+              run: echo "hurray!!!"
+            
+
+
+
+
+
